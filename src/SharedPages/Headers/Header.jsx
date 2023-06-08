@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import useCustomTheme from '../../hooks/useCustomTheme';
 
 const Header = () => {
-    const [theme,setTheme] = useState(true)
-
-    // theme selector 
-    document.querySelector('html').setAttribute('data-theme',  theme ? 'light' : 'dark')
+    const [theme,setTheme] =  useCustomTheme()
   
     const navItems = <>
     <li><p className='md:hidden'><input type="checkbox" className="toggle toggle-success" checked /></p></li>
