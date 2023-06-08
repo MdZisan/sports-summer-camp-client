@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Providers/AuthProvider';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
    const {signIn} = useContext(AuthContext);
@@ -46,6 +47,7 @@ const Login = () => {
     <p className='text-error'>
 {error?<>{error?.message?.split(':')[1]}</>:<> </>}
     </p>
+    <p className='text-lg'>New here ? <Link className='text-accent font-semibold' to='/register'>Register</Link></p>
           </div>
         </div>
     );
