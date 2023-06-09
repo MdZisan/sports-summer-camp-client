@@ -13,7 +13,7 @@ const Dashboard = () => {
   useEffect(()=>{
     axios.get(`http://localhost:5000/users?email=${user?.email}`)
     .then(res=>{
-      console.log(res.data[0].role);
+      // console.log(res.data[0].role);
 
       setusers(res);
       if(res?.data[0]?.role){
@@ -66,7 +66,7 @@ const adminItems = <>
   <div className="drawer-content flex flex-col items-center justify-center">
     {/* Page content here */}
 
-   {pathname==='/dashboard'&& <DashboardLandingPage/>}
+   <DashboardLandingPage/>
    
     <Outlet></Outlet>
    

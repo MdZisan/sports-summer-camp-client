@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const DashboardLandingPage = () => {
+    const {user} = useContext(AuthContext)
     return (
-        <div>
-        <h2>DashBoard basic</h2>
+        <div className='absolute top-10'>
+        <h2 className='text-4xl font-semibold'>Hello, <span className='text-accent font-bold'>{user?.displayName}</span> </h2>
         </div>
     );
 };

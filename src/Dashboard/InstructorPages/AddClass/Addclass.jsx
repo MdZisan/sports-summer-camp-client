@@ -11,7 +11,7 @@ const Addclass = () => {
   } = useForm();
   const onSubmit = (data) => console.log(data);
 const {user} = useContext(AuthContext)
-console.log(user?.displayName);
+// console.log(user?.displayName);
   return (
     <div className="w-full px-8" id="addclass" >
       <div className="text-3xl font-bold text-center">Add Your Classes</div>
