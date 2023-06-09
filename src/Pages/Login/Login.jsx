@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { Link } from 'react-router-dom';
+import SocialLogin from '../../Components/SocialLogin/SocialLogin';
 
 const Login = () => {
    const {signIn} = useContext(AuthContext);
@@ -21,10 +22,13 @@ const Login = () => {
         console.log(data);
         
     }
-    return (
+    return (<>
+    <div> 
+      <h1 className='text-4xl underline text-center font-bold'>LOG IN </h1>
+    </div>
         <div className=' w-full px-9 flex items-center  my-4'>
          <div className='w-1/2  hidden md:block'>
-          <img src="https://img.freepik.com/free-vector/privacy-policy-concept-illustration_114360-7853.jpg?w=740&t=st=1686237748~exp=1686238348~hmac=71d67d391476d290d03f363db13f7fabe4df121157e6174922d7b4d9dce666e8" alt=""  className='rounded-xl w-[70%]'/>
+          <img src="https://img.freepik.com/free-vector/tablet-login-concept-illustration_114360-7893.jpg?w=740&t=st=1686244304~exp=1686244904~hmac=d47f009e6eab25fee329f5ce8eca53d6a7cd26ff4973b3f3f2e8cee2ce421134" alt=""  className='rounded-xl w-[70%]'/>
           </div> 
           <div className='md:w-1/2'>
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -48,8 +52,10 @@ const Login = () => {
 {error?<>{error?.message?.split(':')[1]}</>:<> </>}
     </p>
     <p className='text-lg'>New here ? <Link className='text-accent font-semibold' to='/register'>Register</Link></p>
+    <div className="divider">OR</div>
+    <SocialLogin></SocialLogin>
           </div>
-        </div>
+        </div></>
     );
 };
 

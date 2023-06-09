@@ -1,17 +1,26 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { Link } from 'react-router-dom';
+import SocialLogin from '../../Components/SocialLogin/SocialLogin';
+
 
 const Register = () => {
+  
+ 
     const {createUser,profileUpdate} = useContext(AuthContext);
    const [error,setError] = useState('')
   //  console.log(signIn);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
+      if(data.password!==data.confirmPassword){
+        setError('Confirm Password not Match')
+        return
+      }
         createUser(data.email,data.password)
         .then(result=>{
             profileUpdate(data.name,data.photoUrl)
+            setError(' ')
         })
         .catch(err=>{
           setError(err);
@@ -21,12 +30,16 @@ const Register = () => {
         console.log(data);
         
     }
-    return (
+    return (<>
+    <div>
+    <h1 className='text-4xl underline text-center font-bold'>Register </h1>
+    </div >
+   
         <div className=' w-full px-9 flex items-center  my-4'>
          <div className='w-1/2  hidden md:block'>
-          <img src="https://img.freepik.com/free-vector/privacy-policy-concept-illustration_114360-7853.jpg?w=740&t=st=1686237748~exp=1686238348~hmac=71d67d391476d290d03f363db13f7fabe4df121157e6174922d7b4d9dce666e8" alt=""  className='rounded-xl w-[70%]'/>
+          <img src="https://img.freepik.com/free-vector/tablet-login-concept-illustration_114360-7893.jpg?w=740&t=st=1686244304~exp=1686244904~hmac=d47f009e6eab25fee329f5ce8eca53d6a7cd26ff4973b3f3f2e8cee2ce421134" alt=""  className='rounded-xl w-[70%]'/>
           </div> 
-          <div className='md:w-1/2'>
+          <div className={`md:w-1/2  p-3 rounded-xl `}>
           <form onSubmit={handleSubmit(onSubmit)}>
            <div className="form-control">
           <label className="label">
@@ -59,7 +72,14 @@ const Register = () => {
        {errors.password?.type=== 'minLength'&& <p className='text-error'>Password Must be 6 required</p> }
        {errors.password?.type=== 'maxLength'&& <p className='text-error'>Password Must be less then 20 required</p> }
        {errors.password?.type=== 'pattern'&& <p className='text-error'>Password Must be have one uppercase , one lowercase , one number , one symbol required</p> }
-      
+       <div className="form-control">
+          <label className="label">
+            {/* TODO: SHOW BUTTON ADD */}
+            <span className="label-text">Password</span>
+          </label>
+          <input required {...register("confirmPassword")} placeholder='Confirm Password' type='password'  className="input input-bordered w-full" />
+        </div>
+        {error&&<p className='text-error'>{error}</p>}
       <input type="submit" className='btn mt-2' value={'Sign Up'} />
       
     </form>
@@ -67,8 +87,11 @@ const Register = () => {
 {error?<>{error?.message?.split(':')[1]}</>:<> </>}
     </p>
     <p className='text-lg'>Already Have an Account ? <Link className='text-accent font-semibold' to='/login'>Login here</Link></p>
+          <div className="divider">Or</div>
+          <SocialLogin></SocialLogin>
           </div>
-        </div>
+          
+        </div> </>
     );
 };
 

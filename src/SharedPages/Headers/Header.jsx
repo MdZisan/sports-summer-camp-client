@@ -1,12 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useCustomTheme from '../../hooks/useCustomTheme';
-
+import { AuthContext } from '../../Providers/AuthProvider';
+import { RxAvatar } from 'react-icons/rx'
 const Header = () => {
     const [theme,setTheme] =  useCustomTheme()
-  
+  // console.log(getTheme,theme);
+
+  const {user,logout} = useContext(AuthContext)
+
+const handleLogOut=()=>{
+  logout().then(res=>console.log(res)).catch(error=>console.log(error))
+}
     const navItems = <>
-    <li><p className='md:hidden'><input type="checkbox" className="toggle toggle-success" checked /></p></li>
+    <li><p className='md:hidden'><input type="checkbox" className="toggle toggle-success" checked={theme? true :false} onChange={() => setTheme(!theme)}/></p></li>
     <li><Link to={'/instructors'}>Instructors</Link></li>
             <li><Link to={'/classes'}>Classes</Link></li>
             <li><Link to={'/dashboard'}>Dashboard</Link></li>
@@ -33,7 +40,9 @@ const Header = () => {
    
     </ul>
   </div>
-  <div className="navbar-end">
+  <div className="navbar-end ">
+    <div>
+
     <p className='hidden md:block mr-3'>
     <label className="swap swap-rotate">
   
@@ -48,7 +57,41 @@ const Header = () => {
   
 </label>
         </p>
-    <Link className='btn btn-accent text-white' to={'/login'}>Login</Link>
+    </div>
+    <div className='flex items-center gap-3'>
+    {user ? <a className=''><button className='btn btn-accent text-white'onClick={handleLogOut}>Logout</button></a> : <Link to='/login' className='btn btn-accent text-white'>Login</Link>}
+       {user&& <p className='hidden md:block'>{user.email}</p>}
+       <div className="dropdown dropdown-end">
+      <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+       {/* { user || <div className="rounded-full">
+          <div className='text-3xl'><RxAvatar/></div>
+        </div>} */}
+       { user?.photoURL ? <div className="avatar"  title={user.displayName}>
+  <div className="w-10 rounded-full" title={user.displayName} >
+   
+
+    <img src={user.photoURL} title={user.displayName}/>
+    
+  </div>
+</div> : <div className="rounded-full">
+          <div className='text-3xl'><RxAvatar/></div>
+        </div>}
+      </label>
+      <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
+      <li>{user&& <p className='text-lg'> Name: {user.displayName}</p>}</li>
+          <li><small>{user&& <p className='md:hidden'>{user.email}</p>}</small></li>
+        <li> 
+           {/* <button onClick={handleLogOut}>Logout</button>  */}
+        {user ? <p  className=''><button onClick={handleLogOut}>Logout</button></p> : <Link to='/login'>Login</Link>}
+       
+        
+         </li>
+        
+      </ul>
+    </div>
+
+    </div>
+    {/* <Link className='btn btn-accent text-white' to={'/login'}>Login</Link> */}
   </div>
 </div>
         </div>

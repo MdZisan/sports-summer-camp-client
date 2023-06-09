@@ -1,11 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const useCustomTheme = ()=>{
     const [theme,setTheme] = useState(true)
-
+// console.log(theme);
     // theme selector 
-    document.querySelector('html').setAttribute('data-theme',  theme ? 'light' : 'dark');
-    return[theme,setTheme]
+   useEffect(()=>{
+  const themeInterface =   document.querySelector('html').setAttribute('data-theme',  theme ? 'light' : 'dark');
+
+},[theme])
+
+return[theme,setTheme]
+
+
 
 }
 export default useCustomTheme;
