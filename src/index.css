@@ -6,3 +6,15 @@
     display: flex;
     justify-content: center;
 }
+ 
+.drawer-content{
+    background-image: url('https://i.ibb.co/4FwH7qP/seamless-pattern-with-sport-theme-103032-15.jpg');
+    color: white;
+   
+}
+#addclass .label-text{
+    color: white;
+    
+    font-size: 1rem;
+
+}
