@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { Link } from 'react-router-dom';
 import SocialLogin from '../../Components/SocialLogin/SocialLogin';
+import axios from 'axios';
 
 
 const Register = () => {
@@ -13,6 +14,7 @@ const Register = () => {
   //  console.log(signIn);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
+   
       if(data.password!==data.confirmPassword){
         setError('Confirm Password not Match')
         return
@@ -20,7 +22,12 @@ const Register = () => {
         createUser(data.email,data.password)
         .then(result=>{
             profileUpdate(data.name,data.photoUrl)
+            axios.post('http://localhost:5000/users',{name: data.name,photo:data.photoUrl,email: data.email,role: 'student'})
+            .then(res=>{
+              console.log('User post',res);
+            })
             setError(' ')
+            
         })
         .catch(err=>{
           setError(err);
