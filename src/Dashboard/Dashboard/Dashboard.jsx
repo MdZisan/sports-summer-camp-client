@@ -5,7 +5,7 @@ import DashboardLandingPage from './DashboardLandingPage';
 const Dashboard = () => {
 
 const {pathname} = useLocation()
-console.log(pathname);
+// console.log(pathname);
     const instructorItems = <>
     <div className='font-semibold text-lg text-white'>
     <li>
