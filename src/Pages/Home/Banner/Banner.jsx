@@ -3,8 +3,8 @@ import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 const Banner = () => {
     return (
-        
-            <Carousel >
+    
+            <Carousel>
                 <div>
                     <img src="https://img.freepik.com/premium-vector/summer-camp-schoolchildren-happy-children-running-jumping-background-open-field-with-coniferous-forest-sky-flat-vector-illustration_65580-481.jpg?w=740" />
                   

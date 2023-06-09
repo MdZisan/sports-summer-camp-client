@@ -4,6 +4,7 @@ import { AuthContext } from '../../Providers/AuthProvider';
 import { Link } from 'react-router-dom';
 import SocialLogin from '../../Components/SocialLogin/SocialLogin';
 import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
 
 const Register = () => {
@@ -12,7 +13,7 @@ const Register = () => {
     const {createUser,profileUpdate} = useContext(AuthContext);
    const [error,setError] = useState('')
   //  console.log(signIn);
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { reset,register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
    
       if(data.password!==data.confirmPassword){
@@ -25,6 +26,11 @@ const Register = () => {
             axios.post('http://localhost:5000/users',{name: data.name,photo:data.photoUrl,email: data.email,role: 'student'})
             .then(res=>{
               console.log('User post',res);
+              if(res.data.insertedId){
+                toast.success('User Created Successfully')
+              }
+              reset()
+              
             })
             setError(' ')
             

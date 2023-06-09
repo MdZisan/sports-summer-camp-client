@@ -8,7 +8,7 @@ const Login = () => {
    const {signIn} = useContext(AuthContext);
    const [error,setError] = useState('')
   //  console.log(signIn);
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const {reset, register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
         signIn(data.email,data.password)
         .then(result=>{
@@ -17,6 +17,7 @@ const Login = () => {
         .catch(err=>{
           setError(err);
           console.log(err);
+          reset();
         })
 
         console.log(data);
