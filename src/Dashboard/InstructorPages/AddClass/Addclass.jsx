@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Addclass = () => {
   const {
@@ -9,7 +10,8 @@ const Addclass = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => console.log(data);
-
+const {user} = useContext(AuthContext)
+console.log(user?.displayName);
   return (
     <div className="w-full px-8" id="addclass" >
       <div className="text-3xl font-bold text-center">Add Your Classes</div>
@@ -43,6 +45,7 @@ const Addclass = () => {
             <span className="label-text">Instructor Name</span>
           </label>
           <input
+          value={user?.displayName}
             type="text"
             placeholder="Instructor Name"
             className="input input-bordered"
@@ -54,6 +57,7 @@ const Addclass = () => {
             <span className="label-text">Instructor Email</span>
           </label>
           <input
+          value={user?.email}
             type="email"
             placeholder="Instructor Email"
             className="input input-bordered"
