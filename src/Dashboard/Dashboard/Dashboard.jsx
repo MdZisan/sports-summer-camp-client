@@ -1,18 +1,44 @@
 import React from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import DashboardLandingPage from './DashboardLandingPage';
 
 const Dashboard = () => {
 
-
+const {pathname} = useLocation()
+console.log(pathname);
     const instructorItems = <>
     <div className='font-semibold text-lg text-white'>
+    <li>
+     {pathname==='/dashboard'|| <Link to={'/dashboard'}>Dashboard</Link>}
+     {pathname==='/dashboard' && <NavLink to={'/dashboard'}>Dashboard</NavLink>}
     
+
+    </li>
     <li><NavLink to={'addClass'}>Add Class</NavLink></li>
     <li><NavLink to={'myClass'}>My Class</NavLink></li>
    
     </div>
     </>
+
+const studentItems = <>
+        <div className='font-semibold text-lg text-white'>
+        <li><NavLink to={'selectedClasses'}>My Selected Classes</NavLink></li>
+        <li><NavLink to={'enrolledClasses'}>My Enrolled Classes</NavLink></li>
+         </div>
+
+
+</>
+
+const adminItems = <>
+    <div className='font-semibold text-lg text-white'>
+        <li><NavLink to={'manageClasses'}>Manage Classes</NavLink></li>
+        <li><NavLink to={'manageUsers'}>Manage Users</NavLink></li>
+         </div>
+
+</>
+
+
+
     return (
         <div>
           <div className="drawer lg:drawer-open">
@@ -20,7 +46,7 @@ const Dashboard = () => {
   <div className="drawer-content flex flex-col items-center justify-center">
     {/* Page content here */}
 
-    <DashboardLandingPage></DashboardLandingPage>
+   {pathname==='/dashboard'&& <DashboardLandingPage/>}
     <Outlet></Outlet>
     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
   
@@ -30,6 +56,8 @@ const Dashboard = () => {
     <ul className="menu p-4 w-80 h-full bg-accent text-base-content">
       {/* Sidebar content here */}
       {instructorItems}
+      {studentItems}
+      {adminItems}
       <div className='divider bg-white h-[2px]'></div>
       <div className='font-semibold text-lg text-white'>
             <li><NavLink to={'/'}>Home</NavLink></li>
