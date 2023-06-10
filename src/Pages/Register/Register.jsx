@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Providers/AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SocialLogin from '../../Components/SocialLogin/SocialLogin';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
@@ -9,7 +9,7 @@ import { toast } from 'react-hot-toast';
 
 const Register = () => {
   
- 
+ const Navigate =useNavigate()
     const {createUser,profileUpdate} = useContext(AuthContext);
    const [error,setError] = useState('')
   //  console.log(signIn);
@@ -28,6 +28,7 @@ const Register = () => {
               console.log('User post',res);
               if(res.data.insertedId){
                 toast.success('User Created Successfully')
+                Navigate('/')
               }
               reset()
               
