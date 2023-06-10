@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Providers/AuthProvider';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import SocialLogin from '../../Components/SocialLogin/SocialLogin';
 
 const Login = () => {
-  const navigate = useNavigate();
+ const Navigate = useNavigate()
    const {signIn,user} = useContext(AuthContext);
    const [error,setError] = useState('')
   //  console.log(signIn);
@@ -14,9 +14,8 @@ const Login = () => {
         signIn(data.email,data.password)
         .then(result=>{
           console.log(result);
-          if(user){
-            navigate('/')
-          }
+          Navigate('/')
+         
         })
         .catch(err=>{
           setError(err);

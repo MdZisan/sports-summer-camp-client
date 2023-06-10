@@ -32,7 +32,7 @@ console.log(id,role);
 
 
     return (
-        <div className='1/3  mt-20'>
+        <div className='  mt-20'>
             <div className="divider h-[2px] bg-white"></div>
             <h2 className='text-3xl font-semibold text-center'>Total Users: {users.length}</h2>
             <div className="divider h-[2px] bg-white"></div>
@@ -43,15 +43,16 @@ console.log(id,role);
        {users &&
             users.map(user=><div key={user?._id}>
             
-            <div className='w-[97%] mx-auto mb-3 '>
-             <div className='bg-white flex p-2 rounded-lg  items-center'> 
+            <div className='w-full mx-auto mb-3 '>
+             <div className='bg-white flex p-2 rounded-lg  items-center w-[800px]'> 
                 <div className='w-1/4'>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSXIp9M5Q4rT_1ehshgdUGg5E9NnDZgYEG-w&usqp=CAU" alt=""  className='w-full'/>
+                    <img src={user?.photo} alt=""  className='w-full rounded-full' />
                 </div>
-                <div className='text-black flex w-4/5 px-5'>
+                <div className='text-black flex gap-x-5  w-4/5 px-5'>
                     <div className='flex-1 my-auto'>
-                        <p>{user?.name}</p>
-                            <p>{user?.role}</p>
+                        <li>Name: {user?.name}</li>
+                            <li>{user?.role}</li>
+                            <li>{user?.email}</li>
                         </div>
                     <div className='flex flex-col w-1/2 gap-2' >
                 <button className="btn btn-error text-white btn-sm" disabled={user?.role==='admin'} onClick={()=>handleRole(user?._id,'admin')}>
