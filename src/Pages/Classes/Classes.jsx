@@ -1,8 +1,22 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../Providers/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 const Classes = () => {
     const [classes,setClasses] = useState([]);
+    const {user} = useContext(AuthContext);
+    const [role,setRole] = useState('')
+    const [selectedClasses, setSelectedClasses] = useState([]);
+    useEffect(()=>{
+        axios.get(`http://localhost:5000/users?email=${user?.email}`)
+        .then(res=>{
+            const rol=  res?.data?.forEach(res=>{
+                setRole(res);
+            })
+            
+        })
+    },[user,role])
 
     useEffect(()=>{
         axios.get(`http://localhost:5000/classes?status=accept`)
@@ -13,6 +27,30 @@ const Classes = () => {
             console.log(err);
         })
     },[])
+
+
+    useEffect(() => {
+        const storedClasses = JSON.parse(localStorage.getItem('selectedClasses')) || [];
+        setSelectedClasses(storedClasses);
+      }, []);
+    
+      const handleSelect = classId => {
+        setSelectedClasses(prevSelectedClasses => [...prevSelectedClasses, classId]);
+      };
+    
+      const handleButtonClick = classId => {
+        handleSelect(classId);
+        // Disable the select button
+        const buttons = document.querySelectorAll('.select-button');
+        buttons.forEach(button => {
+          if (button.getAttribute('data-id') === classId) {
+            button.disabled = true;
+          }
+        });
+        // Store the selected class IDs in local storage
+        localStorage.setItem('selectedClasses', JSON.stringify([...selectedClasses, classId]));
+        toast.success('class is successfully selected')
+      };
 
 
     return (
@@ -33,7 +71,9 @@ const Classes = () => {
   <p> <span className='font-bold'>Available Seats</span> <br /> {classs?.availableSeats}</p>
   <p> <span className='font-bold'>Price</span> <br />$ {classs?.price}</p>
    <div className="card-actions">
-     <button className="btn btn-accent text-white" title='Coming soon' >select</button>
+
+     <button className="btn btn-accent text-white"     title={classs._id}
+                  data-id={classs._id} disabled={role?.role !== 'student' || selectedClasses.includes(classs._id)} onClick={() => handleButtonClick(classs._id)} >select</button>
    </div>
  </div>
 </div>  
