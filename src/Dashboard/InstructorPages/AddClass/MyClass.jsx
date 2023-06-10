@@ -45,7 +45,7 @@ const MyClass = () => {
         <td>{clas?.name}</td>
         <td>{clas?.status}</td>
         <td>0</td>
-        <td>FeedBack</td>
+        <td>{clas?.feedback}</td>
       </tr>
             
             </>)

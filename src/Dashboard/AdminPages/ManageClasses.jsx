@@ -18,7 +18,7 @@ const ManageClasses = () => {
       .then((data) => {
         setClasses(data);
       });
-  }, []);
+  }, []); //TODO: dependency check
 
   const handleStatus=(id,status)=>{
             fetch(`http://localhost:5000/classes/${id}?status=${status}`,{
