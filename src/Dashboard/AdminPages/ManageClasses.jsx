@@ -6,7 +6,7 @@ const ManageClasses = () => {
   const [classes, setClasses] = useState([]);
   const [feedback,setFeedback] = useState('')
   const { user } = useContext(AuthContext);
-
+    const [reload,setReload] = useState(true)
 
 // feedbackText.value= ''
 // console.log(feedbackText.value);
@@ -18,7 +18,7 @@ const ManageClasses = () => {
       .then((data) => {
         setClasses(data);
       });
-  }, []); //TODO: dependency check
+  }, [reload,feedback]); //TODO: dependency check
 
   const handleStatus=(id,status)=>{
             fetch(`http://localhost:5000/classes/${id}?status=${status}`,{
@@ -27,7 +27,8 @@ const ManageClasses = () => {
             .then(res=>res.json())
             .then(data=>{
                 if(data.modifiedCount){
-                    toast.success()
+                    toast.success(`course ${status}`)
+                    setReload(!reload)
                 }
             })
   }
@@ -64,6 +65,7 @@ console.log(id);
                 <th>Class Name</th>
                 <th>Status</th>
                 <th>Instructor Email</th>
+                <th>feedback</th>
                 <th>action</th>
                 {/* //TODO:update button */}
               </tr>
@@ -80,6 +82,7 @@ console.log(id);
                       ${clas?.status==='accept'&& 'text-success'}
                       `}>{clas?.status}</td>
                       <td>{clas?.instructorEmail}</td>
+                      <td>{clas?.feedback}</td>
                       <td className="flex flex-col gap-y-2  ">
                         <button onClick={()=>handleStatus(clas?._id,'accept')} className="btn btn-xs btn-success text-white" disabled={clas?.status==='accept'||clas?.status==='deny'}>
                           Accept

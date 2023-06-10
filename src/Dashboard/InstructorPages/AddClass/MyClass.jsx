@@ -7,7 +7,7 @@ const MyClass = () => {
     const {user} = useContext(AuthContext)
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/classes?email:${user?.email}`)
+        fetch(`http://localhost:5000/classes?email=${user?.email}`)
         .then(res=>res.json())
         .then(data=>{
             setClasses(data);

@@ -49,10 +49,10 @@ console.log(id,role);
                     <img src={user?.photo} alt=""  className='w-full rounded-full' />
                 </div>
                 <div className='text-black flex gap-x-5  w-4/5 px-5'>
-                    <div className='flex-1 my-auto'>
+                    <div className='flex-1 my-auto font-semibold text-lg'>
                         <li>Name: {user?.name}</li>
-                            <li>{user?.role}</li>
-                            <li>{user?.email}</li>
+                            <li>Role: {user?.role}</li>
+                            <li>Email: {user?.email}</li>
                         </div>
                     <div className='flex flex-col w-1/2 gap-2' >
                 <button className="btn btn-error text-white btn-sm" disabled={user?.role==='admin'} onClick={()=>handleRole(user?._id,'admin')}>
