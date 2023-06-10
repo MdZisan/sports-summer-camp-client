@@ -21,3 +21,6 @@
 #addclass input{
 color:black
 }
+.hover:hover{
+    color: black;
+}

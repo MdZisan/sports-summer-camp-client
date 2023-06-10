@@ -15,7 +15,9 @@ const Addclass = () => {
     data.price= parseInt(data.price);
     data.availableSeats= parseInt(data.availableSeats);
     data.instructorName=user?.displayName;
-    data.instructorEmail=user?.email
+    data.instructorEmail=user?.email;
+    data.status= 'pending';
+    data.feedback= '';
 
     //TODO: price and seat convert to INT 
     fetch('http://localhost:5000/classes',{
@@ -36,7 +38,7 @@ const Addclass = () => {
     })
 
 
-    // console.log(data);
+    console.log(data);
   }
 const {user} = useContext(AuthContext)
 // console.log(user?.displayName);
