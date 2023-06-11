@@ -12,6 +12,8 @@ const Payment = () => {
 const [allClass,setAllClass] =useState([])
 const [reload,setReload] = useState(true)
 const [allIDs, setAllIDs] = useState([]);
+const [classId, setClassId] = useState([]);
+
 useEffect(()=>{
     axios.get(`http://localhost:5000/selectedClass?email=${user?.email}&classStatus=selected`)
     .then(res=>{
@@ -22,11 +24,13 @@ useEffect(()=>{
 
 useEffect(() => {
   const ids = allClass.map(item => item._id);
+  const classesId =  allClass.map(item => item.classId);
   setAllIDs(ids);
+  setClassId(classesId)
 }, [allClass]);
 
 
-// console.log(allIDs);
+console.log(allIDs);
 
 const total = allClass?.reduce((accumulator, currentClass) => accumulator + currentClass.price, 0);
 
@@ -38,7 +42,7 @@ const total = allClass?.reduce((accumulator, currentClass) => accumulator + curr
            <h2 className='text-2xl font-semibold uppercase'>Total Amount to pay: $<span className='text-green-400 font-bold'>{total}</span></h2>
           <div className='w-full'>
           <Elements stripe={stripePromise}>
-            <CheckoutPayment price={total} allIDs={allIDs}></CheckoutPayment>
+            <CheckoutPayment price={total} allIDs={allIDs} classId={classId}></CheckoutPayment>
            </Elements>
           </div>
         </div>

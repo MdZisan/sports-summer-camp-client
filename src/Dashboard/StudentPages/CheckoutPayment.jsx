@@ -7,8 +7,9 @@ import { useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import axios from "axios";
 import './CheckoutForm.css'
+import { toast } from "react-hot-toast";
 
-const CheckoutPayment = ({price ,allIDs}) => {
+const CheckoutPayment = ({price ,allIDs,classId}) => {
     // console.log(price);
     const stripe = useStripe();
     const elements = useElements();
@@ -87,13 +88,15 @@ const CheckoutPayment = ({price ,allIDs}) => {
                 price,
                 date: new Date(),
                 allIDs: allIDs,
-                st: 'new'
+                classId : classId
                 
             }
             axios.post('http://localhost:5000/payment', payment)
                 .then(res => {
                     console.log(res.data);
-                    if (res.data.result.insertedId) {
+                    const dat= res.data
+                    if (dat.paymenthistory.insertedId&&dat.allClassesUpdate.modifiedCount>0&&dat.selectedClassesUpdate.modifiedCount>0) {
+                        toast.success('payment successfull')
                         // display confirm
                     }
                 })
