@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { toast } from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
 const SelectedClasses = () => {
   // const [selectedClass,setSelectedClass]=useState([])
@@ -49,7 +50,7 @@ const total = allClass.reduce((accumulator, currentClass) => accumulator + curre
 
 
     return (
-        <div>
+        <div className='mt-[100px]'>
             <div className='flex justify-between items-center'>
             <h2 className='text-2xl font-bold uppercase'>selected Classes: {allClass.length} </h2>
             <h2 className='text-xl font-semibold uppercase'>Total Price: <span className='font-bold text-success'>{total}</span></h2>
@@ -65,9 +66,9 @@ const total = allClass.reduce((accumulator, currentClass) => accumulator + curre
         <th>#</th>
         <th>photo</th>
         <th>Name</th>
-        <th>Price</th>
+        <th>Status</th>
         <th>Action</th>
-        <th><button className="btn btn-warning btn-sm w-full text-white">Pay</button></th>
+        <th><button className="btn btn-warning btn-sm w-full text-white"><Link to={'/dashboard/payment'}>Pay</Link></button></th>
       </tr>
     </thead>
     <tbody className='text-lg'>

@@ -61,30 +61,7 @@ const Classes = () => {
       });
   };
 
-  // local storage store data
-
-  // useEffect(() => {
-  //     const storedClasses = JSON.parse(localStorage.getItem('selectedClasses')) || [];
-  //     setSelectedClasses(storedClasses);
-  //   }, []);
-
-  //   const handleSelect = classId => {
-  //     setSelectedClasses(prevSelectedClasses => [...prevSelectedClasses, classId]);
-  //   };
-
-  //   const handleButtonClick = classId => {
-  //     handleSelect(classId);
-  //     // Disable the select button
-  //     const buttons = document.querySelectorAll('.select-button');
-  //     buttons.forEach(button => {
-  //       if (button.getAttribute('data-id') === classId) {
-  //         button.disabled = true;
-  //       }
-  //     });
-  //     // Store the selected class IDs in local storage
-  //     localStorage.setItem('selectedClasses', JSON.stringify([...selectedClasses, classId]));
-  //     toast.success('class is successfully selected')
-  //   };
+  
 
   return (
     <div>
@@ -96,7 +73,7 @@ const Classes = () => {
       <div className="p-10 grid grid-cols-1 md:grid-cols-4 gap-y-4">
         {classes?.map((classs) => (
           <div key={classs?._id}>
-            <div className="card w-72 bg-base-100 shadow-xl">
+            <div className={`card w-72 ${classs?.availableSeats<0? 'bg-red-300':'bg-base-200'} shadow-xl`}>
               <figure className="px-10 pt-10">
                 <img
                   src={classs?.image}
@@ -125,7 +102,7 @@ const Classes = () => {
                   <button
                     className="btn btn-accent text-white"
                     disabled={
-                      role?.role !== "student" ||
+                  classs?.availableSeats===0||    role?.role !== "student" ||
                       selectedClasses.some(
                         (item) =>
                           item.studentEmail === user?.email &&
@@ -150,3 +127,40 @@ const Classes = () => {
 };
 
 export default Classes;
+
+
+
+
+
+
+
+
+
+
+
+
+
+// local storage store data
+
+  // useEffect(() => {
+  //     const storedClasses = JSON.parse(localStorage.getItem('selectedClasses')) || [];
+  //     setSelectedClasses(storedClasses);
+  //   }, []);
+
+  //   const handleSelect = classId => {
+  //     setSelectedClasses(prevSelectedClasses => [...prevSelectedClasses, classId]);
+  //   };
+
+  //   const handleButtonClick = classId => {
+  //     handleSelect(classId);
+  //     // Disable the select button
+  //     const buttons = document.querySelectorAll('.select-button');
+  //     buttons.forEach(button => {
+  //       if (button.getAttribute('data-id') === classId) {
+  //         button.disabled = true;
+  //       }
+  //     });
+  //     // Store the selected class IDs in local storage
+  //     localStorage.setItem('selectedClasses', JSON.stringify([...selectedClasses, classId]));
+  //     toast.success('class is successfully selected')
+  //   };

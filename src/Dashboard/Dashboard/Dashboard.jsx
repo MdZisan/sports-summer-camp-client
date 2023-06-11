@@ -46,6 +46,7 @@ const studentItems = <>
         <li><NavLink to={'selectedClasses'}>My Selected Classes</NavLink></li>
         <li><NavLink to={'enrolledClasses'}>My Enrolled Classes</NavLink></li>
         <li><NavLink to={'payment'}>Payment</NavLink></li>
+        <li><NavLink to={'paymentHistory'}>Payment History</NavLink></li>
          </div>
 
 
