@@ -31,6 +31,7 @@ const MyClass = () => {
         <th>Class Name</th>
         <th>Status</th>
         <th>Total enrolled</th>
+        <th>Available seats</th>
         <th>FeedBack</th>
         {/* //TODO:update button */}
       </tr>
@@ -45,6 +46,7 @@ const MyClass = () => {
         <td>{clas?.name}</td>
         <td>{clas?.status}</td>
         <td>0</td>
+        <td>{clas?.availableSeats}</td>
         <td>{clas?.feedback}</td>
       </tr>
             
