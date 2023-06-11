@@ -98,6 +98,7 @@ const Classes = () => {
                   <span className="font-bold">Price</span> <br />${" "}
                   {classs?.price}
                 </p>
+                {user?.email || <p className="text-red-500">please login to select the class</p>}
                 <div className="card-actions">
                   <button
                     className="btn btn-accent text-white"
@@ -113,6 +114,7 @@ const Classes = () => {
                   >
                     Select class
                   </button>
+                
 
                   {/* <button className="btn btn-accent text-white"     title={classs._id}
                   data-id={classs._id} disabled={role?.role !== 'student' || selectedClasses.includes(classs._id)} onClick={() => handleButtonClick(classs._id)} >select</button> */}

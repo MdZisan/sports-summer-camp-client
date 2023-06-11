@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import useCustomTheme from '../../hooks/useCustomTheme';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { RxAvatar } from 'react-icons/rx'
@@ -17,9 +17,9 @@ const handleLogOut=()=>{
 
     const navItems = <>
     <li><p className='md:hidden'><input type="checkbox" className="toggle toggle-success" checked={theme? true :false} onChange={() => setTheme(!theme)}/></p></li>
-    <li><Link to={'/instructors'}>Instructors</Link></li>
-            <li><Link to={'/classes'}>Classes</Link></li>
-            <li><Link to={'/dashboard'}>Dashboard</Link></li>
+    <li><NavLink to={'/instructors'}>Instructors</NavLink></li>
+            <li><NavLink to={'/classes'}>Classes</NavLink></li>
+            {user?.email && <li><NavLink to={'/dashboard'}>Dashboard</NavLink></li>}
 
     </>
     return (
