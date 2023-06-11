@@ -10,7 +10,9 @@ const Header = () => {
   const {user,logout} = useContext(AuthContext)
 
 const handleLogOut=()=>{
-  logout().then(res=>console.log(res)).catch(error=>console.log(error))
+  logout()
+  .then(res=>{console.log(res)})
+  .catch(error=>{console.log(error)})
 }
 
     const navItems = <>
