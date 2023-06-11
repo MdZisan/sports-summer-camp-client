@@ -12,6 +12,7 @@ import ManageClasses from "../Dashboard/AdminPages/ManageClasses";
 import ManageUsers from "../Dashboard/AdminPages/ManageUsers";
 import Instructors from "../Pages/Instructors/Instructors";
 import Classes from "../Pages/Classes/Classes";
+import Payment from "../Dashboard/StudentPages/Payment";
 
 
 const Routes = createBrowserRouter([
@@ -52,6 +53,11 @@ const Routes = createBrowserRouter([
         },{
             path:'enrolledClasses',
             element:<EnrolledClasses/>
+        },{
+            path:'payment',
+            element:<Payment/>
+
+
         },{
             path:'manageClasses',
             element:<ManageClasses/>

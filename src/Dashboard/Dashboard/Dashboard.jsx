@@ -45,6 +45,7 @@ const studentItems = <>
         <div className='font-semibold text-lg text-white'>
         <li><NavLink to={'selectedClasses'}>My Selected Classes</NavLink></li>
         <li><NavLink to={'enrolledClasses'}>My Enrolled Classes</NavLink></li>
+        <li><NavLink to={'payment'}>Payment</NavLink></li>
          </div>
 
 

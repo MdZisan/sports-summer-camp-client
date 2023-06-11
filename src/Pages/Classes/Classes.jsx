@@ -95,7 +95,7 @@ const Classes = () => {
       <div className="divider"></div>
       <div className="p-10 grid grid-cols-1 md:grid-cols-4 gap-y-4">
         {classes?.map((classs) => (
-          <>
+          <div key={classs?._id}>
             <div className="card w-72 bg-base-100 shadow-xl">
               <figure className="px-10 pt-10">
                 <img
@@ -142,7 +142,7 @@ const Classes = () => {
                 </div>
               </div>
             </div>
-          </>
+          </div>
         ))}
       </div>
     </div>
