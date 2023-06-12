@@ -19,7 +19,7 @@ const Addclass = () => {
     data.status= 'pending';
     data.feedback= '';
 
-    //TODO: price and seat convert to INT 
+    
     fetch('http://localhost:5000/classes',{
       method:'POST',
       headers:{'content-type':'application/json'},

@@ -98,7 +98,7 @@ const Classes = () => {
                   <span className="font-bold">Price</span> <br />${" "}
                   {classs?.price}
                 </p>
-                {user?.email || <p className="text-red-500">please login to select the class</p>}
+                {user?.email ?'': <p className="text-red-500">please login to select the class</p>}
                 <div className="card-actions">
                   <button
                     className="btn btn-accent text-white"

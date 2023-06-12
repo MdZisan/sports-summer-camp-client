@@ -75,7 +75,7 @@ const Register = () => {
         </div>
         <div className="form-control">
           <label className="label">
-            {/* TODO: SHOW BUTTON ADD */}
+          
             <span className="label-text">Password</span>
           </label>
           <input required {...register("password", { required: true,minLength:6,maxLength:20,pattern:/(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/})} placeholder='Password' type='password'  className="input input-bordered w-full" />
@@ -88,7 +88,7 @@ const Register = () => {
        {errors.password?.type=== 'pattern'&& <p className='text-error'>Password Must be have one uppercase , one lowercase , one number , one symbol required</p> }
        <div className="form-control">
           <label className="label">
-            {/* TODO: SHOW BUTTON ADD */}
+        
             <span className="label-text">Password</span>
           </label>
           <input required {...register("confirmPassword")} placeholder='Confirm Password' type='password'  className="input input-bordered w-full" />

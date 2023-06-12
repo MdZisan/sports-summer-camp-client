@@ -3,10 +3,11 @@ import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import DashboardLandingPage from './DashboardLandingPage';
 import axios from 'axios';
 import { AuthContext } from '../../Providers/AuthProvider';
+import { MdArticle, MdAssignmentAdd, MdDashboard, MdDoneAll, MdHome, MdOutlineClass, MdOutlineManageAccounts, MdOutlineManageSearch, MdPayment, MdPendingActions, MdPeopleOutline, MdSelectAll } from "react-icons/md";
 
 const Dashboard = () => {
   //TODO: tenstack use for data
-  //TODO: react icon set for dashboard items
+ 
   const [users,setusers]= useState('');
   const [role,setRole] =useState('')
   const {user} = useContext(AuthContext)
@@ -27,26 +28,31 @@ const Dashboard = () => {
 
 const {pathname} = useLocation()
 // console.log(pathname);
-    const instructorItems = <>
-    <div className='font-semibold text-lg text-white'>
-    <li>
-     {pathname==='/dashboard'|| <Link to={'/dashboard'}>Dashboard</Link>}
-     {pathname==='/dashboard' && <NavLink to={'/dashboard'}>Dashboard</NavLink>}
+const dashboardLi =<>
+ <li>
+     {pathname==='/dashboard'|| <Link to={'/dashboard'}><MdDashboard/>Dashboard</Link>}
+     {pathname==='/dashboard' && <NavLink to={'/dashboard'}><MdDashboard/>Dashboard</NavLink>}
     
 
     </li>
-    <li><NavLink to={'addClass'}>Add Class</NavLink></li>
-    <li><NavLink to={'myClass'}>My Classes</NavLink></li>
+
+</>
+    const instructorItems = <>
+    <div className='font-semibold text-lg text-white'>
+   {dashboardLi}
+    <li><NavLink to={'addClass'}><MdAssignmentAdd/> Add Class</NavLink></li>
+    <li><NavLink to={'myClass'}><MdArticle/> My Classes</NavLink></li>
    
     </div>
     </>
 
 const studentItems = <>
         <div className='font-semibold text-lg text-white'>
-        <li><NavLink to={'selectedClasses'}>My Selected Classes</NavLink></li>
-        <li><NavLink to={'enrolledClasses'}>My Enrolled Classes</NavLink></li>
-        <li><NavLink to={'payment'}>Payment</NavLink></li>
-        <li><NavLink to={'paymentHistory'}>Payment History</NavLink></li>
+        {dashboardLi}
+        <li><NavLink to={'selectedClasses'}><MdSelectAll/> My Selected Classes</NavLink></li>
+        <li><NavLink to={'enrolledClasses'}><MdDoneAll/> My Enrolled Classes</NavLink></li>
+        <li><NavLink to={'payment'}><MdPayment/> Payment</NavLink></li>
+        <li><NavLink to={'paymentHistory'}><MdPendingActions/> Payment History</NavLink></li>
          </div>
 
 
@@ -54,8 +60,9 @@ const studentItems = <>
 
 const adminItems = <>
     <div className='font-semibold text-lg text-white'>
-        <li><NavLink to={'manageClasses'}>Manage Classes</NavLink></li>
-        <li><NavLink to={'manageUsers'}>Manage Users</NavLink></li>
+   {dashboardLi}
+        <li><NavLink to={'manageClasses'}><MdOutlineManageSearch/> Manage Classes</NavLink></li>
+        <li><NavLink to={'manageUsers'}><MdOutlineManageAccounts/>Manage Users</NavLink></li>
          </div>
 
 </>
@@ -85,9 +92,9 @@ const adminItems = <>
       {role==='admin' && adminItems}
       <div className='divider bg-white h-[2px]'></div>
       <div className='font-semibold text-lg text-white'>
-            <li><NavLink to={'/'}>Home</NavLink></li>
-      <li><NavLink to={'/instructors'}>Instructors</NavLink></li>
-            <li><NavLink to={'/classes'}>Classes</NavLink></li>
+            <li><NavLink to={'/'}><MdHome/> Home</NavLink></li>
+      <li><NavLink to={'/instructors'}><MdPeopleOutline/> Instructors</NavLink></li>
+            <li><NavLink to={'/classes'}><MdOutlineClass/> Classes</NavLink></li>
       </div>
     </ul>
   

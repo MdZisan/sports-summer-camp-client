@@ -14,6 +14,7 @@ import Instructors from "../Pages/Instructors/Instructors";
 import Classes from "../Pages/Classes/Classes";
 import Payment from "../Dashboard/StudentPages/Payment";
 import PaymentHistory from "../Dashboard/StudentPages/PaymentHistory";
+import UpdateClass from "../Dashboard/InstructorPages/UpdateClass";
 
 
 const Routes = createBrowserRouter([
@@ -49,6 +50,13 @@ const Routes = createBrowserRouter([
             path:'myClass',
             element:<MyClass></MyClass>
         },{
+            path:'updateClass/:id',
+            element:<UpdateClass/>,
+            loader:({params})=>fetch(`http://localhost:5000/updateClasses/${params.id}`)
+        }
+        
+        
+        ,{
             path:'selectedClasses',
             element:<SelectedClasses/>
         },{

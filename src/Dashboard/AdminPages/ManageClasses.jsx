@@ -18,7 +18,7 @@ const ManageClasses = () => {
       .then((data) => {
         setClasses(data);
       });
-  }, [reload,feedback]); //TODO: dependency check
+  }, [reload,feedback]); 
 
   const handleStatus=(id,status)=>{
             fetch(`http://localhost:5000/classes/${id}?status=${status}`,{
@@ -67,7 +67,7 @@ console.log(id);
                 <th>Instructor Email</th>
                 <th>feedback</th>
                 <th>action</th>
-                {/* //TODO:update button */}
+               
               </tr>
             </thead>
             <tbody>

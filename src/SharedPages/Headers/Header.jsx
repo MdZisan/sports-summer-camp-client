@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import useCustomTheme from '../../hooks/useCustomTheme';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { RxAvatar } from 'react-icons/rx'
+import { FaCampground } from 'react-icons/fa'
 const Header = () => {
     const [theme,setTheme] =  useCustomTheme()
   // console.log(getTheme,theme);
@@ -34,7 +35,7 @@ const handleLogOut=()=>{
        {navItems}
       </ul>
     </div>
-    <Link to={'/'} className="btn btn-ghost normal-case text-xl">Summer Sport Stars</Link>
+    <Link to={'/'} className="btn btn-ghost normal-case text-xl"><FaCampground/> Summer Sport Stars</Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">

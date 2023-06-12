@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../../Providers/AuthProvider';
+import { Link } from 'react-router-dom';
 
 const MyClass = () => {
     const [classes,setClasses] = useState([]);
@@ -14,7 +15,7 @@ const MyClass = () => {
         })
     },[])
 
-
+console.log(classes);
 
     return (
         <div className='mt-[100px] w-[95%]'>
@@ -33,7 +34,8 @@ const MyClass = () => {
         <th>Total enrolled</th>
         <th>Available seats</th>
         <th>FeedBack</th>
-        {/* //TODO:update button */}
+        <th>Action</th>
+      
       </tr>
     </thead>
     <tbody>
@@ -45,9 +47,10 @@ const MyClass = () => {
         <th>{i+1}</th>
         <td>{clas?.name}</td>
         <td>{clas?.status}</td>
-        <td>0</td>
+        <td>{clas?.studentEnrolled}</td>
         <td>{clas?.availableSeats}</td>
         <td>{clas?.feedback}</td>
+        <td><button className="btn btn-sm btn-primary"><Link to={`/dashboard/updateClass/${clas?._id}`}>Update</Link></button></td>
       </tr>
             
             </>)
