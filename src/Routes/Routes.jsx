@@ -19,6 +19,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import AdminRoutes from "./AdminRoutes";
 import InstructorRoutes from "./InstructorRoutes";
 import StudentRoutes from "./StudentRoutes";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 
 const Routes = createBrowserRouter([
@@ -26,6 +27,7 @@ const Routes = createBrowserRouter([
    {
     path:'/',
     element:<MainLayout></MainLayout>,
+    errorElement:<ErrorPage/>,
     children:[
        { path:'/',
         element:<Home></Home>
