@@ -9,7 +9,7 @@ const usePopularClasses=()=>{
         }
     })
 
-    return [popularClasses]
+    return [popularClasses,refetch]
 }
 
 export default usePopularClasses;

@@ -3,6 +3,7 @@ import {  GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthSta
 import app from '../Firebase/Firebase.config';
 import axios from 'axios';
 import useClasses from '../hooks/useClasses';
+import usePopularClasses from '../hooks/usePopularClasses';
 
 
 
@@ -18,6 +19,7 @@ const AuthProvider = ({children}) => {
 const [user,setUser]= useState(null);
 const [loading,setLoading] = useState(true);
  const [,refetch] = useClasses()
+ const [,refetchP] = usePopularClasses()
 const logout =()=>{
     signOut(auth)
     .then(()=>{
@@ -54,6 +56,9 @@ useEffect(()=>{
     const unsubscribe = onAuthStateChanged(auth,  currentUser => {
         setUser(currentUser);
         console.log('current user', currentUser);
+        refetch();
+        refetchP();
+        // console.log(refetchP());
         if(currentUser){
             axios.post('https://summersportcamp-production.up.railway.app/jwt', {email: currentUser?.email})
             .then(data =>{
@@ -61,6 +66,7 @@ useEffect(()=>{
                 localStorage.setItem('access-token', data.data.token)
                 setLoading(false);
                 refetch()
+                refetchP()
             })
         }
         else{

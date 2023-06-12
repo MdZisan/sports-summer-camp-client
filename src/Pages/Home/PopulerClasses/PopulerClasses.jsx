@@ -35,14 +35,14 @@ setClasses(popularClasses)
         console.log(err);
       });
 
-    // axios
-    //   .get(`https://summersportcamp-production.up.railway.app/popularClasses?status=accept`)
-    //   .then((res) => {
-    //     setClasses(res.data);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
+    axios
+      .get(`https://summersportcamp-production.up.railway.app/popularClasses?status=accept`)
+      .then((res) => {
+        setClasses(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
     axios
       .get("https://summersportcamp-production.up.railway.app/selectedClass")
