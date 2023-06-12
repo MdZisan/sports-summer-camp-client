@@ -9,7 +9,7 @@ const useClasses=()=>{
         }
     })
 
-    return [classes]
+    return [classes,refetch]
 }
 
 export default useClasses;

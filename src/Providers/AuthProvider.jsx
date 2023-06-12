@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from 'react';
 import {  GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import app from '../Firebase/Firebase.config';
 import axios from 'axios';
+import useClasses from '../hooks/useClasses';
 
 
 
@@ -16,7 +17,7 @@ const googleProvider =new GoogleAuthProvider();
 const AuthProvider = ({children}) => {
 const [user,setUser]= useState(null);
 const [loading,setLoading] = useState(true);
- 
+ const [,refetch] = useClasses()
 const logout =()=>{
     signOut(auth)
     .then(()=>{
@@ -59,6 +60,7 @@ useEffect(()=>{
                 // console.log(data.data.token)
                 localStorage.setItem('access-token', data.data.token)
                 setLoading(false);
+                refetch()
             })
         }
         else{

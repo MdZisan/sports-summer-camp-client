@@ -5,11 +5,7 @@ const Instructors = () => {
     const [instructors,setInstructors]=useState([])
     const token = localStorage.getItem('access-token');
     useEffect(()=>{
-        axios.get('https://summersportcamp-production.up.railway.app/users?role=instructor',{
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
+        axios.get('https://summersportcamp-production.up.railway.app/insUsers')
         .then(res=>{
             setInstructors(res.data)
         })

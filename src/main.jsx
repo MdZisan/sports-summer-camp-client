@@ -15,14 +15,12 @@ import "./index.css";
 const queryClient = new QueryClient()
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+   < QueryClientProvider client={queryClient}>
   <AuthProvider>
     <Toaster/>
-   < QueryClientProvider client={queryClient}>
 
    <RouterProvider router={Routes}/>
-</QueryClientProvider>
-
-  
   </AuthProvider>
+</QueryClientProvider>
   </React.StrictMode>,
 )
