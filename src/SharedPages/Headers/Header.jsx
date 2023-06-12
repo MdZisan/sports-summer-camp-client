@@ -63,7 +63,9 @@ const handleLogOut=()=>{
         </p>
     </div>
     <div className='flex items-center gap-3'>
-    {user ? <a className=''><button className='btn btn-accent text-white'onClick={handleLogOut}>Logout</button></a> : <Link to='/login' className='btn btn-accent text-white'>Login</Link>}
+    {user ? <a className=''>
+      <button className='btn btn-accent text-white hidden md:block'onClick={handleLogOut}>Logout</button>
+      </a> : <Link to='/login' className='btn btn-accent text-white'>Login</Link>}
        {user&& <p className='hidden md:block'>{user.email}</p>}
        <div className="dropdown dropdown-end">
       <label tabIndex={0} className="btn btn-ghost btn-circle avatar ">
@@ -86,7 +88,9 @@ const handleLogOut=()=>{
           <li><small>{user&& <p className='md:hidden'>{user.email}</p>}</small></li>
         <li> 
            {/* <button onClick={handleLogOut}>Logout</button>  */}
-        {user ? <p  className=''><button onClick={handleLogOut}>Logout</button></p> : <Link to='/login'>Login</Link>}
+        {user ? <p  className=''>
+          <button onClick={handleLogOut}>Logout</button>
+          </p> : <Link to='/login'>Login</Link>}
        
         
          </li>
