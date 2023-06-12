@@ -12,8 +12,12 @@ const Header = () => {
 
 const handleLogOut=()=>{
   logout()
-  .then(res=>{console.log(res)})
-  .catch(error=>{console.log(error)})
+  .then(res=>{
+    console.log(res)
+  })
+  .catch(error=>{
+    console.log(error)
+  })
 }
 
     const navItems = <>

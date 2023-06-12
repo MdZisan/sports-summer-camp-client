@@ -5,7 +5,7 @@ import Footer from '../SharedPages/Footer/Footer';
 
 const MainLayout = () => {
     return (
-        <div>
+        <div className='overflow-x-hidden'>
             <Header></Header>
             <Outlet></Outlet>
             <Footer></Footer>
