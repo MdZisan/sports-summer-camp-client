@@ -12,7 +12,11 @@ const Classes = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/users?email=${user?.email}`)
+      .get(`http://localhost:5000/users?email=${user?.email}`,{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((res) => {
         res?.data?.forEach((res) => {
           setRole(res);
@@ -73,7 +77,7 @@ const Classes = () => {
       <div className="p-10 grid grid-cols-1 md:grid-cols-4 gap-y-4">
         {classes?.map((classs) => (
           <div key={classs?._id}>
-            <div className={`card w-72 ${classs?.availableSeats<0? 'bg-red-300':'bg-base-200'} shadow-xl`}>
+            <div className={`card w-72 ${classs?.availableSeats<=0? 'bg-red-300':'bg-base-200'} shadow-xl`}>
               <figure className="px-10 pt-10">
                 <img
                   src={classs?.image}

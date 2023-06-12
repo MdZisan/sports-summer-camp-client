@@ -5,8 +5,14 @@ import { toast } from 'react-hot-toast';
 const ManageUsers = () => {
     const [users,setUsers] = useState([]);
     const [updaterole,setRole]=useState(true)
+    const token = localStorage.getItem('access-token');
     useEffect(()=>{
-        axios.get('http://localhost:5000/users')
+        axios.get('http://localhost:5000/users',{
+            
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                },
+        })
         .then(res=>{
             setUsers(res?.data);
         })

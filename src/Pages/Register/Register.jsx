@@ -1,14 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Providers/AuthProvider';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import SocialLogin from '../../Components/SocialLogin/SocialLogin';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 
 
 const Register = () => {
-  
+  const token = localStorage.getItem('access-token');
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
  const Navigate =useNavigate()
     const {createUser,profileUpdate} = useContext(AuthContext);
    const [error,setError] = useState('')
@@ -23,12 +25,13 @@ const Register = () => {
         createUser(data.email,data.password)
         .then(result=>{
             profileUpdate(data.name,data.photoUrl)
+            Navigate(from, { replace: true })
             axios.post('http://localhost:5000/users',{name: data.name,photo:data.photoUrl,email: data.email,role: 'student'})
             .then(res=>{
               console.log('User post',res);
               if(res.data.insertedId){
                 toast.success('User Created Successfully')
-                Navigate('/')
+                Navigate(from, { replace: true })
               }
               reset()
               

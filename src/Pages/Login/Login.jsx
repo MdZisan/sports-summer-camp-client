@@ -1,10 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Providers/AuthProvider';
-import { Link, useNavigate} from 'react-router-dom';
+import { Link, useLocation, useNavigate} from 'react-router-dom';
 import SocialLogin from '../../Components/SocialLogin/SocialLogin';
 
 const Login = () => {
+
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
   const [show,setShow]=useState(true);
  const Navigate = useNavigate()
    const {signIn,user} = useContext(AuthContext);
@@ -15,7 +18,7 @@ const Login = () => {
         signIn(data.email,data.password)
         .then(result=>{
           console.log(result);
-          Navigate('/')
+          Navigate(from, { replace: true })
          
         })
         .catch(err=>{
@@ -55,7 +58,7 @@ const Login = () => {
       <input type="submit" className='btn mt-2' value={'Login Now'} />
       
     </form>
-    <p className='absolute bottom-16 btn-sm right-5 btn'><button onClick={()=>setShow(!show)}>{show?'show':'hide'}</button></p>
+    <p className={`absolute ${show?'btn-success':'btn-error'} text-white btn-primary bottom-16 btn-sm right-5 btn`}><button onClick={()=>setShow(!show)}>{show?'show':'hide'}</button></p>
     </div>
     <p className='text-error'>
 {error?<>{error?.message?.split(':')[1]}</>:<> </>}

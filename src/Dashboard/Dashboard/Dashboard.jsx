@@ -7,13 +7,17 @@ import { MdArticle, MdAssignmentAdd, MdDashboard, MdDoneAll, MdHome, MdOutlineCl
 
 const Dashboard = () => {
   //TODO: tenstack use for data
- 
+  const token = localStorage.getItem('access-token');
   const [users,setusers]= useState('');
   const [role,setRole] =useState('')
   const {user} = useContext(AuthContext)
 
   useEffect(()=>{
-    axios.get(`http://localhost:5000/users?email=${user?.email}`)
+    axios.get(`http://localhost:5000/users?email=${user?.email}`,{
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     .then(res=>{
       // console.log(res.data[0].role);
 

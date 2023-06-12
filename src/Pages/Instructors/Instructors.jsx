@@ -3,9 +3,13 @@ import React, { useEffect, useState } from 'react';
 
 const Instructors = () => {
     const [instructors,setInstructors]=useState([])
-
+    const token = localStorage.getItem('access-token');
     useEffect(()=>{
-        axios.get('http://localhost:5000/users?role=instructor')
+        axios.get('http://localhost:5000/users?role=instructor',{
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
         .then(res=>{
             setInstructors(res.data)
         })

@@ -15,6 +15,10 @@ import Classes from "../Pages/Classes/Classes";
 import Payment from "../Dashboard/StudentPages/Payment";
 import PaymentHistory from "../Dashboard/StudentPages/PaymentHistory";
 import UpdateClass from "../Dashboard/InstructorPages/UpdateClass";
+import PrivateRoutes from "./PrivateRoutes";
+import AdminRoutes from "./AdminRoutes";
+import InstructorRoutes from "./InstructorRoutes";
+import StudentRoutes from "./StudentRoutes";
 
 
 const Routes = createBrowserRouter([
@@ -41,14 +45,18 @@ const Routes = createBrowserRouter([
     ]
    } ,{
     path:'dashboard'
-    ,element:<Dashboard></Dashboard>,
+    ,element:<PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
     children:[
         {
             path:'addClass',
-            element:<Addclass></Addclass>
+            element:<InstructorRoutes>
+                <Addclass></Addclass>
+            </InstructorRoutes>
         },{
             path:'myClass',
-            element:<MyClass></MyClass>
+            element:<InstructorRoutes>
+                <MyClass></MyClass>
+            </InstructorRoutes>
         },{
             path:'updateClass/:id',
             element:<UpdateClass/>,
@@ -58,26 +66,26 @@ const Routes = createBrowserRouter([
         
         ,{
             path:'selectedClasses',
-            element:<SelectedClasses/>
+            element:<StudentRoutes><SelectedClasses/></StudentRoutes>
         },{
             path:'enrolledClasses',
-            element:<EnrolledClasses/>
+            element:<StudentRoutes><EnrolledClasses/></StudentRoutes>
         },{
             path:'payment',
-            element:<Payment/>
+            element:<StudentRoutes><Payment/></StudentRoutes>
 
 
         },
         {
             path:'paymentHistory',
-            element:<PaymentHistory/>
+            element:<StudentRoutes><PaymentHistory/></StudentRoutes>
         }
         ,{
             path:'manageClasses',
-            element:<ManageClasses/>
+            element:<AdminRoutes><ManageClasses/></AdminRoutes>
         },{
             path:'manageUsers',
-            element:<ManageUsers/>
+            element:<AdminRoutes><ManageUsers/> </AdminRoutes>
         }
     ]
    }

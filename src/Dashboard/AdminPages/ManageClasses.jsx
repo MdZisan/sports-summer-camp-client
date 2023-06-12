@@ -52,7 +52,7 @@ console.log(id);
 
   return (
     <div className="mt-[100px] w-[95%]">
-      <div className="text-3xl font-bold text-center">My Classes</div>
+      <div className="text-3xl font-bold text-center">ALL Classes: {classes.length}</div>
       <div className="divider  h-[2px] bg-white"></div>
       {/* Table  */}
       <div>
