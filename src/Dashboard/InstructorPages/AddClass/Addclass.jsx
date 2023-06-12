@@ -20,7 +20,7 @@ const Addclass = () => {
     data.feedback= '';
 
     
-    fetch('http://localhost:5000/classes',{
+    fetch('https://summersportcamp-production.up.railway.app/classes',{
       method:'POST',
       headers:{'content-type':'application/json'},
       body:JSON.stringify(data)

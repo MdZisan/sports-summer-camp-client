@@ -60,7 +60,7 @@ const Routes = createBrowserRouter([
         },{
             path:'updateClass/:id',
             element:<UpdateClass/>,
-            loader:({params})=>fetch(`http://localhost:5000/updateClasses/${params.id}`)
+            loader:({params})=>fetch(`https://summersportcamp-production.up.railway.app/updateClasses/${params.id}`)
         }
         
         

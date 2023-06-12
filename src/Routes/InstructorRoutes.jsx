@@ -13,7 +13,7 @@ const InstructorRoutes = ({ children }) => {
   const [role,setRole]= useState('')
   const token = localStorage.getItem('access-token');
   useEffect(()=>{
-    fetch(`http://localhost:5000/users?email=${user?.email}`,{
+    fetch(`https://summersportcamp-production.up.railway.app/users?email=${user?.email}`,{
       headers: {
         Authorization: `Bearer ${token}`,
       },

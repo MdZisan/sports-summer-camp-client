@@ -8,7 +8,7 @@ const MyClass = () => {
     const {user} = useContext(AuthContext)
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/classes?email=${user?.email}`)
+        fetch(`https://summersportcamp-production.up.railway.app/classes?email=${user?.email}`)
         .then(res=>res.json())
         .then(data=>{
             setClasses(data);

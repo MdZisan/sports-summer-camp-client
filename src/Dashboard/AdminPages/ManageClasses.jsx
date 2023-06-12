@@ -13,7 +13,7 @@ const ManageClasses = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/classes`)
+    fetch(`https://summersportcamp-production.up.railway.app/classes`)
       .then((res) => res.json())
       .then((data) => {
         setClasses(data);
@@ -21,7 +21,7 @@ const ManageClasses = () => {
   }, [reload,feedback]); 
 
   const handleStatus=(id,status)=>{
-            fetch(`http://localhost:5000/classes/${id}?status=${status}`,{
+            fetch(`https://summersportcamp-production.up.railway.app/classes/${id}?status=${status}`,{
                 method:"PATCH",headers:{'content-type':'application/json'}
             })
             .then(res=>res.json())
@@ -34,7 +34,7 @@ const ManageClasses = () => {
   }
 const handleFeedback=(id)=>{
     
-    fetch(`http://localhost:5000/classes?id=${id}&feedback=${feedback}`,{
+    fetch(`https://summersportcamp-production.up.railway.app/classes?id=${id}&feedback=${feedback}`,{
         method:"PUT",
         headers:{'content-type':'application/json'}
     })

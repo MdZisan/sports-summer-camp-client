@@ -11,7 +11,7 @@ const [allClass,setAllClass] =useState([])
 const [reload,setReload] = useState(true)
 const [allIDs, setAllIDs] = useState([]);
 useEffect(()=>{
-    axios.get(`http://localhost:5000/selectedClass?email=${user?.email}&classStatus=selected`)
+    axios.get(`https://summersportcamp-production.up.railway.app/selectedClass?email=${user?.email}&classStatus=selected`)
     .then(res=>{
         setAllClass(res.data)
     })
@@ -30,7 +30,7 @@ console.log(allIDs);
 
 
 const handleDelete=(id)=>{
-   axios.delete(`http://localhost:5000/selectedClass/${id}`)
+   axios.delete(`https://summersportcamp-production.up.railway.app/selectedClass/${id}`)
     .then(res=>{
         console.log(res);
         if(res.data.deletedCount>0){

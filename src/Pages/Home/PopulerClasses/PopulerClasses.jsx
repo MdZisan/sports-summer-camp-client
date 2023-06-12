@@ -4,6 +4,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { Fade, Slide } from "react-awesome-reveal";
+import usePopularClasses from "../../../hooks/usePopularClasses";
 
 const PopulerClasses = () => {
   const [classes, setClasses] = useState([]);
@@ -12,9 +13,13 @@ const PopulerClasses = () => {
   const [selectedClasses, setSelectedClasses] = useState([]);
   const [reload, setReload] = useState(true);
   const token = localStorage.getItem('access-token');
+
+  const [popularClasses] = usePopularClasses()
   useEffect(() => {
+setClasses(popularClasses)
+
     axios
-      .get(`http://localhost:5000/users?email=${user?.email}`,{
+      .get(`https://summersportcamp-production.up.railway.app/users?email=${user?.email}`,{
 
       
         headers: {
@@ -30,17 +35,17 @@ const PopulerClasses = () => {
         console.log(err);
       });
 
-    axios
-      .get(`http://localhost:5000/popularClasses?status=accept`)
-      .then((res) => {
-        setClasses(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // axios
+    //   .get(`https://summersportcamp-production.up.railway.app/popularClasses?status=accept`)
+    //   .then((res) => {
+    //     setClasses(res.data);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
 
     axios
-      .get("http://localhost:5000/selectedClass")
+      .get("https://summersportcamp-production.up.railway.app/selectedClass")
       .then((res) => {
         setSelectedClasses(res?.data);
       })
@@ -53,7 +58,7 @@ const PopulerClasses = () => {
     classes.studentEmail = user?.email;
     // console.log(classes);
     axios
-      .post("http://localhost:5000/selectedClass", classes)
+      .post("https://summersportcamp-production.up.railway.app/selectedClass", classes)
       .then((res) => {
         console.log(res);
         if (res.data.insertedId) {

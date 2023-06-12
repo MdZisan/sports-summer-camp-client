@@ -14,7 +14,7 @@ const UpdateClass = () => {
         event.preventDefault();
       
 const seats = parseInt(event.target.seats.value)
-        axios.patch(`http://localhost:5000/updateClasses/${id}`,{seats:seats})
+        axios.patch(`https://summersportcamp-production.up.railway.app/updateClasses/${id}`,{seats:seats})
         .then(res=>{
             console.log(res.data);
             if(res.data.modifiedCount>0){

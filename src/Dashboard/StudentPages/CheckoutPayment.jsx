@@ -23,7 +23,7 @@ const CheckoutPayment = ({price ,allIDs,classId}) => {
    
     useEffect(()=>{
        if(price>0){
-        axios.post('http://localhost:5000/create-payment-intent',{price})
+        axios.post('https://summersportcamp-production.up.railway.app/create-payment-intent',{price})
         .then(res=>{
             // console.log(res.data.clientSecret);
             setClientSecret(res.data.clientSecret);
@@ -91,7 +91,7 @@ const CheckoutPayment = ({price ,allIDs,classId}) => {
                 classId : classId
                 
             }
-            axios.post('http://localhost:5000/payment', payment)
+            axios.post('https://summersportcamp-production.up.railway.app/payment', payment)
                 .then(res => {
                     console.log(res.data);
                     const dat= res.data
