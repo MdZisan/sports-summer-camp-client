@@ -26,7 +26,7 @@ const Register = () => {
         .then(result=>{
             profileUpdate(data.name,data.photoUrl)
             Navigate(from, { replace: true })
-            axios.post('https://summersportcamp-production.up.railway.app/users',{name: data.name,photo:data.photoUrl,email: data.email,role: 'student'})
+            axios.post('https://sports-summer-camp-server-three.vercel.app/users',{name: data.name,photo:data.photoUrl,email: data.email,role: 'student'})
             .then(res=>{
               console.log('User post',res);
               if(res.data.insertedId){

@@ -13,7 +13,7 @@ const Dashboard = () => {
   const {user} = useContext(AuthContext)
 
   useEffect(()=>{
-    axios.get(`https://summersportcamp-production.up.railway.app/users?email=${user?.email}`,{
+    axios.get(`https://sports-summer-camp-server-three.vercel.app/users?email=${user?.email}`,{
       headers: {
         Authorization: `Bearer ${token}`,
       },

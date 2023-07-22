@@ -4,7 +4,7 @@ const usePopularClasses=()=>{
     const {data: popularClasses = [],refetch} = useQuery({
         queryKey: ['popularClasses'],
         queryFn: async() => {
-            const res = await fetch('https://summersportcamp-production.up.railway.app/popularClasses?status=accept');
+            const res = await fetch('https://sports-summer-camp-server-three.vercel.app/popularClasses?status=accept');
             return res.json();
         }
     })

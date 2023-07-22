@@ -62,7 +62,7 @@ const Routes = createBrowserRouter([
         },{
             path:'updateClass/:id',
             element:<UpdateClass/>,
-            loader:({params})=>fetch(`https://summersportcamp-production.up.railway.app/updateClasses/${params.id}`)
+            loader:({params})=>fetch(`https://sports-summer-camp-server-three.vercel.app/updateClasses/${params.id}`)
         }
         
         

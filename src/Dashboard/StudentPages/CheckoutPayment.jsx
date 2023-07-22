@@ -23,7 +23,7 @@ const CheckoutPayment = ({price ,allIDs,classId}) => {
    
     useEffect(()=>{
        if(price>0){
-        axios.post('https://summersportcamp-production.up.railway.app/create-payment-intent',{price})
+        axios.post('https://sports-summer-camp-server-three.vercel.app/create-payment-intent',{price})
         .then(res=>{
             // console.log(res.data.clientSecret);
             setClientSecret(res.data.clientSecret);
@@ -91,7 +91,7 @@ const CheckoutPayment = ({price ,allIDs,classId}) => {
                 classId : classId
                 
             }
-            axios.post('https://summersportcamp-production.up.railway.app/payment', payment)
+            axios.post('https://sports-summer-camp-server-three.vercel.app/payment', payment)
                 .then(res => {
                     console.log(res.data);
                     const dat= res.data

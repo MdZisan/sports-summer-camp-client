@@ -19,7 +19,7 @@ const [cla] = useClasses()
   useEffect(() => {
     setClasses(cla)
     axios
-      .get(`https://summersportcamp-production.up.railway.app/users?email=${user?.email}`,{
+      .get(`https://sports-summer-camp-server-three.vercel.app/users?email=${user?.email}`,{
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -34,7 +34,7 @@ const [cla] = useClasses()
       });
 
     // axios
-    //   .get(`https://summersportcamp-production.up.railway.app/classes?status=accept`)
+    //   .get(`https://sports-summer-camp-server-three.vercel.app/classes?status=accept`)
     //   .then((res) => {
     //     setClasses(res.data);
     //   })
@@ -43,7 +43,7 @@ const [cla] = useClasses()
     //   });
 
     axios
-      .get("https://summersportcamp-production.up.railway.app/selectedClass")
+      .get("https://sports-summer-camp-server-three.vercel.app/selectedClass")
       .then((res) => {
         setSelectedClasses(res?.data);
       })
@@ -56,7 +56,7 @@ const [cla] = useClasses()
     classes.studentEmail = user?.email;
     // console.log(classes);
     axios
-      .post("https://summersportcamp-production.up.railway.app/selectedClass", classes)
+      .post("https://sports-summer-camp-server-three.vercel.app/selectedClass", classes)
       .then((res) => {
         console.log(res);
         if (res.data.insertedId) {

@@ -6,7 +6,7 @@ const Instructors = () => {
     const [instructors,setInstructors]=useState([])
     const token = localStorage.getItem('access-token');
     useEffect(()=>{
-        axios.get('https://summersportcamp-production.up.railway.app/insUsers')
+        axios.get('https://sports-summer-camp-server-three.vercel.app/insUsers')
         .then(res=>{
             const limited = res.data.slice(0,6);
             // console.log(limited);

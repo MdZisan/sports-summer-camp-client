@@ -15,7 +15,7 @@ const SocialLogin = () => {
             const loggedUSer = result.user;
             Navigate(from, { replace: true })
             console.log(loggedUSer);
-            axios.post('https://summersportcamp-production.up.railway.app/users',{name: loggedUSer.displayName,email: loggedUSer.email,photo: loggedUSer.photoURL,role:'student'})
+            axios.post('https://sports-summer-camp-server-three.vercel.app/users',{name: loggedUSer.displayName,email: loggedUSer.email,photo: loggedUSer.photoURL,role:'student'})
             .then(res=>{
               console.log('User google post',res);
               if(res.data.insertedId ){

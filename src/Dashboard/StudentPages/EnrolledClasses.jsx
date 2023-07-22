@@ -6,7 +6,7 @@ const EnrolledClasses = () => {
     const [enrollClasses,setEnrollClasses]= useState([])
     const {user}= useContext(AuthContext);
     useEffect(()=>{
-        axios.get(`https://summersportcamp-production.up.railway.app/selectedClass?email=${user?.email}&classStatus=enrolled`)
+        axios.get(`https://sports-summer-camp-server-three.vercel.app/selectedClass?email=${user?.email}&classStatus=enrolled`)
         .then(res=>{
             console.log(res);
             setEnrollClasses(res.data)

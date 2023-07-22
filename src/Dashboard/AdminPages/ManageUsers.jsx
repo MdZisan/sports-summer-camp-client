@@ -7,7 +7,7 @@ const ManageUsers = () => {
     const [updaterole,setRole]=useState(true)
     const token = localStorage.getItem('access-token');
     useEffect(()=>{
-        axios.get('https://summersportcamp-production.up.railway.app/users',{
+        axios.get('https://sports-summer-camp-server-three.vercel.app/users',{
             
                 headers: {
                   Authorization: `Bearer ${token}`,
@@ -20,7 +20,7 @@ const ManageUsers = () => {
 
 const handleRole =(id,role)=>{
 console.log(id,role);
-        fetch(`https://summersportcamp-production.up.railway.app/users/${id}?role=${role}`,{
+        fetch(`https://sports-summer-camp-server-three.vercel.app/users/${id}?role=${role}`,{
     method:'PATCH',
     headers:{'content-type':'application/json'},
         })

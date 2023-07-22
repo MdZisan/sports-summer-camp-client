@@ -20,7 +20,7 @@ const Addclass = () => {
     data.feedback= '';
 
     
-    fetch('https://summersportcamp-production.up.railway.app/classes',{
+    fetch('https://sports-summer-camp-server-three.vercel.app/classes',{
       method:'POST',
       headers:{'content-type':'application/json'},
       body:JSON.stringify(data)

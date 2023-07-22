@@ -15,7 +15,7 @@ const [allIDs, setAllIDs] = useState([]);
 const [classId, setClassId] = useState([]);
 
 useEffect(()=>{
-    axios.get(`https://summersportcamp-production.up.railway.app/selectedClass?email=${user?.email}&classStatus=selected`)
+    axios.get(`https://sports-summer-camp-server-three.vercel.app/selectedClass?email=${user?.email}&classStatus=selected`)
     .then(res=>{
         setAllClass(res.data)
     })

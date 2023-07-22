@@ -19,7 +19,7 @@ const PopulerClasses = () => {
 setClasses(popularClasses)
 
     axios
-      .get(`https://summersportcamp-production.up.railway.app/users?email=${user?.email}`,{
+      .get(`https://sports-summer-camp-server-three.vercel.app/users?email=${user?.email}`,{
 
       
         headers: {
@@ -36,7 +36,7 @@ setClasses(popularClasses)
       });
 
     axios
-      .get(`https://summersportcamp-production.up.railway.app/popularClasses?status=accept`)
+      .get(`https://sports-summer-camp-server-three.vercel.app/popularClasses?status=accept`)
       .then((res) => {
         setClasses(res.data);
       })
@@ -45,7 +45,7 @@ setClasses(popularClasses)
       });
 
     axios
-      .get("https://summersportcamp-production.up.railway.app/selectedClass")
+      .get("https://sports-summer-camp-server-three.vercel.app/selectedClass")
       .then((res) => {
         setSelectedClasses(res?.data);
       })
@@ -58,7 +58,7 @@ setClasses(popularClasses)
     classes.studentEmail = user?.email;
     // console.log(classes);
     axios
-      .post("https://summersportcamp-production.up.railway.app/selectedClass", classes)
+      .post("https://sports-summer-camp-server-three.vercel.app/selectedClass", classes)
       .then((res) => {
         console.log(res);
         if (res.data.insertedId) {

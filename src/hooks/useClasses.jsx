@@ -4,7 +4,7 @@ const useClasses=()=>{
     const {data: classes = [],refetch} = useQuery({
         queryKey: ['classes'],
         queryFn: async() => {
-            const res = await fetch('https://summersportcamp-production.up.railway.app/classes?status=accept');
+            const res = await fetch('https://sports-summer-camp-server-three.vercel.app/classes?status=accept');
             return res.json();
         }
     })
